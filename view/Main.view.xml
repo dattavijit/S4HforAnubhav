@@ -1,0 +1,116 @@
+<mvc:View controllerName="demo.app.matcost.controller.Main" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:u="sap.ui.unified" displayBlock="true" xmlns="sap.m" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:core="sap.ui.core">
+	<App>
+		<pages>
+			<Page title="{i18n>title}">
+				<!--<customHeader>-->
+				<!--	<Bar>-->
+				<!--		<contentMiddle>-->
+				<!--			<Label text="Read Data From Excel"/>-->
+				<!--		</contentMiddle>-->
+				<!--		<contentRight>-->
+				<!--			<u:FileUploader id="FileUploaderId" sameFilenameAllowed="true" iconOnly="false" buttonOnly="true" fileType="XLSX,xlsx"-->
+				<!--				icon="sap-icon://upload" iconFirst="true" style="Emphasized" change="onUpload"/>-->
+				<!--		</contentRight>-->
+				<!--	</Bar>-->
+				<!--</customHeader>-->
+				<content>
+					<smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="CollectorSet" search="onFilterSearch">
+						<smartFilterBar:controlConfiguration>
+							<smartFilterBar:ControlConfiguration key="Zzmatprod" index="1" label="Part Produced" groupId="_BASIC" width="300px"
+								visibleInAdvancedArea="true">
+								<smartFilterBar:customControl>
+									<Input id="Zzmatprod" showValueHelp="true" 
+									valueHelpRequest="onValueHelp"></Input>
+								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="Zzlocation" index="2" label="Location" groupId="_BASIC" width="300px"
+								visibleInAdvancedArea="true">
+								<smartFilterBar:customControl>
+									<Input id="Zzlocation" showValueHelp="true" 
+									valueHelpRequest="onValueHelp"></Input>
+								</smartFilterBar:customControl>
+							</smartFilterBar:ControlConfiguration>
+							<smartFilterBar:ControlConfiguration key="Validated" filterType="single"/>
+						</smartFilterBar:controlConfiguration>
+						<!-- layout data used to make the table growing but the filter bar fixed -->
+						<smartFilterBar:layoutData>
+							<FlexItemData shrinkFactor="0"/>
+						</smartFilterBar:layoutData>
+					</smartFilterBar:SmartFilterBar>
+					<Table id="idTable" width="auto" class="sapUiResponsiveMargin" noDataText="{worklistView>/tableNoDataText}" 
+						items="{path : 'local>/data', filters: [{path: 'Zcurrency', operator: 'NE', value1: 'D'}]}">
+						<headerToolbar>
+							<Toolbar>
+								<Title id="idTopTitle" text="Upload Data"/>
+								<ToolbarSpacer/>
+								<!--<SearchField width="30%" search="onSearch" placeholder="enter location"></SearchField>-->
+								<Button icon="sap-icon://add" press="onAdd"></Button>
+								<Button icon="sap-icon://excel-attachment" press="onAddExcelData"></Button>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column id="idTopName">
+								<Text text="Location"/>
+							</Column>
+							<Column id="idBrand">
+								<Text text="Cost Collector"/>
+							</Column>
+							<Column id="idPrice">
+								<Text text="Part Produced"/>
+							</Column>
+							<Column id="idEndDate">
+								<Text text="End Date"/>
+							</Column>
+							<Column id="idQuantity">
+								<Text text="Quantity Produced"/>
+							</Column>
+							<Column id="idCost">
+								<Text text="Material Cost"/>
+							</Column>
+							<Column id="idLaborCost">
+								<Text text="Labor Cost"/>
+							</Column>
+							<Column id="idEmissionCost">
+								<Text text="Machine Cost"/>
+							</Column>
+							<Column id="idAvgCost">
+								<Text text="Unit Cost"/>
+							</Column>
+							<Column id="idbtns">
+								<Text text="Options"/>
+							</Column>
+							
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{local>Zzlocation}"></Text>
+									<Text text="{local>Zzcostcol}"></Text>
+									<Text text="{local>Zzmatprod}"></Text>
+									<Text text="{path : 'local>Zzenddate', formatter: '.formatter.getSAPFormattedDate'}"></Text>
+									<Text text="{local>Zzqtyprods}"></Text>
+									<Text text="{local>Zzmatcosts}"></Text>
+									<Text text="{local>Zzlabcosts}"></Text>
+									<Text text="{local>Zzmchcosts}"></Text>
+									<Text text="{local>Zzunitcosts}"></Text>
+									<HBox>
+										<Button icon="sap-icon://edit" press="onEdit"></Button>
+										<Button class="sapUiTinyMarginBegin" icon="sap-icon://delete" press="onDelete"></Button>
+									</HBox>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Button text="Save" press="onSave"></Button>
+						<Button text="Cancel" press="onCancel"></Button>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

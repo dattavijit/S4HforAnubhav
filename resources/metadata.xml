@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema Namespace="ZMM_DT_COST_COLL_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+			<EntityType Name="MatCollAll" sap:content-version="1">
+				<Key><PropertyRef Name="Zzlocation"/><PropertyRef Name="Zzcostcol"/><PropertyRef Name="Zzmatprod"/><PropertyRef Name="Zzenddate"/></Key><Property Name="Zzlocation" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="DODAAC" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Zzcostcol" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Cost Collector"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Zzmatprod" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Material Produced"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Zzenddate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="End Date" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Zzqtyprods" Type="Edm.Decimal" Nullable="false" Precision="11" Scale="0" sap:unicode="false" sap:label="Quantity Produced"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Zzmatcosts" Type="Edm.Decimal" Nullable="false" Precision="14" Scale="3" sap:unicode="false" sap:unit="Zcurrency"
+					sap:label="Material Cost" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Zzlabcosts" Type="Edm.Decimal" Nullable="false" Precision="14" Scale="3" sap:unicode="false" sap:unit="Zcurrency"
+					sap:label="Labor Costs" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Zzmchcosts" Type="Edm.Decimal" Nullable="false" Precision="14" Scale="3" sap:unicode="false" sap:unit="Zcurrency"
+					sap:label="Machin Costs" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Zzunitcosts" Type="Edm.Decimal" Nullable="false" Precision="14" Scale="3" sap:unicode="false" sap:unit="Zcurrency"
+					sap:label="Unit Costs" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Zcurrency" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Currency" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/></EntityType>
+			<EntityType Name="Collector" sap:content-version="1">
+				<Key><PropertyRef Name="Key"/></Key><Property Name="Key" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Value" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="ValueHelp" sap:content-version="1">
+				<Key><PropertyRef Name="Key"/></Key><Property Name="Key" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false"
+					sap:filterable="false"/><Property Name="Text" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="MatCollector" sap:content-version="1">
+				<Key><PropertyRef Name="Zzlocation"/><PropertyRef Name="Zzcostcol"/><PropertyRef Name="Zzmatprod"/><PropertyRef Name="Zzenddate"/></Key><Property Name="Zzlocation" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="DODAAC" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Zzcostcol" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Cost Collector"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Zzmatprod" Type="Edm.String" Nullable="false" MaxLength="18" sap:unicode="false" sap:label="Material Produced"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Zzenddate" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="End Date" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="Zzunitcosts" Type="Edm.Decimal" Nullable="false" Precision="14" Scale="3" sap:unicode="false" sap:label="Unit Costs"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityContainer Name="ZMM_DT_COST_COLL_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="MatCollAllSet" EntityType="ZMM_DT_COST_COLL_SRV.MatCollAll" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="CollectorSet" EntityType="ZMM_DT_COST_COLL_SRV.Collector" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="ValueHelpSet" EntityType="ZMM_DT_COST_COLL_SRV.ValueHelp" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="MatCollectorSet" EntityType="ZMM_DT_COST_COLL_SRV.MatCollector" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/></EntityContainer><atom:link rel="self" href="https://stcfin.st.com:44321/sap/opu/odata/SAP/ZMM_DT_COST_COLL_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/><atom:link rel="latest-version" href="https://stcfin.st.com:44321/sap/opu/odata/SAP/ZMM_DT_COST_COLL_SRV/$metadata"
+				xmlns:atom="http://www.w3.org/2005/Atom"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>
